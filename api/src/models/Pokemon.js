@@ -12,9 +12,6 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
       },
-      idPokeApi: {
-        type: DataTypes.INTEGER,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,6 +33,9 @@ module.exports = (sequelize) => {
       },
       weight: {
         type: DataTypes.INTEGER,
+      },
+      img: {
+        type: DataTypes.TEXT,
       },
     },
     { timestamps: false }
