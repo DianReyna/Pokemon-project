@@ -4,8 +4,17 @@ const axios = require("axios");
 const AllPokemonsApi = async () => {
   const getApi = await axios
     .get("https://pokeapi.co/api/v2/pokemon")
-    .then((data) => {
-      return data.data.results;
+
+    .then(async (data) => {
+      let r;
+      for (let key in data.data) {
+        if (key === "next") {
+          let o = await Promise.all([axios.get(data.data[key])]);
+          r = o.map((res) => res.data.results);
+          let m = data.data.results.concat(r[0]);
+          return m;
+        }
+      }
     })
     .then((data) => {
       return Promise.all(data.map((res) => axios.get(res.url)));
