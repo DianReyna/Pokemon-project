@@ -1,4 +1,3 @@
-const { Sequelize } = require("sequelize");
 const { Pokemon, Type } = require("../db");
 const axios = require("axios");
 
@@ -33,7 +32,8 @@ const AllPokemonsApi = async () => {
 };
 
 const getPokemons = async (req, res, next) => {
-  const { name } = req.body;
+  const { name } = req.query;
+
   try {
     // let x = getApi.data.results?.map((pokemons) => {
     // const idpokemon = axios.get(getApi.data.results[0].url).then((data) => {
@@ -45,16 +45,27 @@ const getPokemons = async (req, res, next) => {
     let apiPokemon = await AllPokemonsApi();
     let dbPokemon = await Pokemon.findAll({
       include: {
-        attributes: ["name"],
         model: Type,
+        attributes: ["name"],
         through: {
           attributes: [],
         },
       },
     });
 
-    //----- concatenar dbApi--------------
+    //----- concatenar db&Api--------------
     let allPokemons = [...apiPokemon, ...dbPokemon];
+
+    if (name) {
+      let found = allPokemons.filter((e) =>
+        e.name.toLowerCase().includes(name.toLowerCase())
+      );
+      found.length
+        ? res.send(found)
+        : res.status(404).send("El pokemon que busca no existe");
+    } else {
+      res.send(apiPokemon);
+    }
 
     return res.send(apiPokemon);
   } catch (error) {
@@ -64,6 +75,7 @@ const getPokemons = async (req, res, next) => {
 
 const getIdPokemon = async (req, res, next) => {
   const { idPokemon } = req.params;
+
   //--------------getPokemonIdApi-----------
   let poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
 
@@ -81,27 +93,53 @@ const getIdPokemon = async (req, res, next) => {
   };
   //-------------getPokemonIdDb-----------------
 
-  //let idpokemondb = Pokemon.findByPk(id);
+  let idpokemondb = Pokemon.findByPk(idPokemon, {
+    include: {
+      model: Type,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
 
-  res.send(pokeid);
+  res.send(idpokemondb);
 };
 
 const postPokemon = async (req, res, next) => {
-  const { name, types, image, hp, attack, defense, speed, height, weight } =
-    req.body;
-
-  let newPokemon = Pokemon.create({
+  const {
     name,
-    types,
-    image,
     hp,
     attack,
     defense,
     speed,
     height,
     weight,
-  });
-  res.send("exito");
+    types,
+    image,
+    createdInDb,
+  } = req.body;
+  try {
+    const newPokemon = await Pokemon.create({
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      types,
+      image,
+      createdInDb,
+    });
+
+    let typeDb = await Type.findAll({ where: { name: types } });
+    newPokemon.addType(typeDb);
+
+    res.send("pokemon creado con exito");
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 module.exports = {
