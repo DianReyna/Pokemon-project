@@ -1,10 +1,7 @@
-const {} = require("../controllers/controllerType.js");
-const modelType = require("../models/Type.js");
+const { getAllTypes } = require("../controllers/typeController.js");
 const { Router } = require("express");
 const router = Router();
 
-router.get("/", (req, res) => {
-  const { name } = req.body;
-});
+router.get("/", getAllTypes);
 
 module.exports = router;

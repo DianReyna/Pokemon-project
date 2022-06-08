@@ -2,13 +2,11 @@ const {
   getPokemons,
   getIdPokemon,
   postPokemon,
-} = require("../controllers/controllerPokemon.js");
+} = require("../controllers/pokemonController.js");
 const { Router } = require("express");
 const router = Router();
 
 router.get("/", getPokemons);
-
-router.get("/");
 
 router.get("/:idPokemon", getIdPokemon);
 
