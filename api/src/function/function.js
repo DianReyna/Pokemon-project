@@ -6,13 +6,12 @@ const AllPokemonsApi = async () => {
     .get("https://pokeapi.co/api/v2/pokemon")
 
     .then(async (data) => {
-      let r;
       for (let key in data.data) {
         if (key === "next") {
-          let o = await Promise.all([axios.get(data.data[key])]);
-          r = o.map((res) => res.data.results);
-          let m = data.data.results.concat(r[0]);
-          return m;
+          let nextUrl = await Promise.all([axios.get(data.data[key])]);
+          let result = nextUrl.map((res) => res.data.results);
+          let allPoke = data.data.results.concat(result[0]);
+          return allPoke;
         }
       }
     })
@@ -27,7 +26,7 @@ const AllPokemonsApi = async () => {
       id: poke.id,
       name: poke.name,
       types: poke.types.map((t) => t.type.name),
-      image: poke.sprites.other.home.front_default,
+      img: poke.sprites.other.home.front_default,
       hp: poke.stats[0].base_stat,
       attack: poke.stats[1].base_stat,
       defense: poke.stats[2].base_stat,
@@ -39,7 +38,7 @@ const AllPokemonsApi = async () => {
   return arrayPokeApi;
 };
 //---------getAllPokemonsDb---------
-const AllPokemonsDb = async () => {
+const pokemonsDb = async () => {
   const dbPokemon = await Pokemon.findAll({
     include: {
       model: Type,
@@ -50,14 +49,28 @@ const AllPokemonsDb = async () => {
     },
   });
 
-  return dbPokemon;
+  const dataDb = dbPokemon?.map((poke) => {
+    return {
+      id: poke.dataValues.id,
+      name: poke.dataValues.name,
+      types: poke.dataValues.types.map((t) => t.dataValues.name),
+      img: poke.dataValues.img,
+      hp: poke.dataValues.hp,
+      attack: poke.dataValues.attack,
+      defense: poke.dataValues.defense,
+      speed: poke.dataValues.speed,
+      height: poke.dataValues.height,
+      weight: poke.dataValues.weight,
+    };
+  });
+  return dataDb;
 };
 //----- concatenar db&Api--------------
 const AllPokemons = async () => {
   let apiPokemon = await AllPokemonsApi();
-  let dbPokemon = await AllPokemonsDb();
+  let dbPokemon = await pokemonsDb();
 
-  let pokemonsInfo = apiPokemon.concat(dbPokemon);
+  let pokemonsInfo = [...apiPokemon, ...dbPokemon];
 
   return pokemonsInfo;
 };
