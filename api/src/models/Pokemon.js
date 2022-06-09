@@ -61,11 +61,10 @@ module.exports = (sequelize) => {
         },
       },
       img: {
-        type: DataTypes.TEXT,
-        validate: {
-          min: 1,
-          max: 999,
-        },
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue:
+          "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2017/07/247161-nuevos-pokemon-salen-huevos.jpg?itok=_KF-nmwE",
       },
     },
     { timestamps: false }
