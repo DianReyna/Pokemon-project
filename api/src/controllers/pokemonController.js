@@ -1,5 +1,5 @@
 const { Pokemon, Type } = require("../db");
-const { AllPokemons, AllPokemonsApi } = require("../function/function.js");
+const { AllPokemons } = require("../function/function.js");
 const axios = require("axios");
 
 const getPokemons = async (req, res, next) => {
@@ -24,14 +24,22 @@ const getPokemons = async (req, res, next) => {
 
 const getIdPokemon = async (req, res, next) => {
   const { idPokemon } = req.params;
+
+  if (isNaN(parseInt(idPokemon)))
+    return res.status(404).send("El valor ingresado no es un numero");
+
   try {
     const allPokemonInfo = await AllPokemons();
     let pokeFinded = allPokemonInfo.filter((e) => e.id == idPokemon);
-    if (pokeFinded.length) return res.send(pokeFinded);
+    if (pokeFinded.length) {
+      return res.send(pokeFinded);
+    } else {
+      res
+        .status(404)
+        .json(`No se encontro ningun Pokemon con el id: ${idPokemon}`);
+    }
   } catch (error) {
-    res
-      .status(404)
-      .json({ err: `No se encontro ningun Pokemon con el id: ${idPokemon}` });
+    next(error);
   }
 };
 
@@ -54,9 +62,18 @@ const postPokemon = async (req, res, next) => {
       where: { name: name.toLowerCase() },
     });
 
-    if (findPokemon) return res.json({ msg: `El Pokemon ${name} ya existe.` });
+    if (findPokemon)
+      return res.status(404).json({ msg: `El Pokemon ${name} ya existe.` });
 
     if (!name) return res.json({ msg: "Nombre obligatorio" });
+    if (isNaN(name))
+      return res.send(`name: ${name} invalido, el name debe ser un string`);
+
+    let typeDb = await Type.findAll({ where: { name: types } });
+
+    if (typeDb.length !== types.length)
+      return res.status(404).send("El tipo de pokemon incorrecto");
+
     const newPokemon = await Pokemon.create({
       name: name.toLowerCase(),
       hp,
@@ -70,12 +87,12 @@ const postPokemon = async (req, res, next) => {
       createdInDb,
     });
 
-    let typeDb = await Type.findAll({ where: { name: types } });
     newPokemon.addType(typeDb);
 
     res.status(201).send("Pokemon creado con exito");
   } catch (error) {
-    res.send("Error en la data");
+    next(error);
+    //res.send("Error en la data");
   }
 };
 
