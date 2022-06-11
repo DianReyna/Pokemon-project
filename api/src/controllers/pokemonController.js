@@ -41,18 +41,8 @@ const getIdPokemon = async (req, res, next) => {
 };
 
 const postPokemon = async (req, res, next) => {
-  const {
-    name,
-    hp,
-    attack,
-    defense,
-    speed,
-    height,
-    weight,
-    types,
-    img,
-    createdInDb,
-  } = req.body;
+  const { name, hp, attack, defense, speed, height, weight, types, img } =
+    req.body;
 
   try {
     let findPokemon = await Pokemon.findOne({
@@ -87,7 +77,6 @@ const postPokemon = async (req, res, next) => {
       weight,
       types,
       img,
-      createdInDb,
     });
 
     newPokemon.addType(typeDb);
