@@ -10,6 +10,6 @@ router.get("/", getPokemons);
 
 router.get("/:idPokemon", getIdPokemon);
 
-router.post("/create", postPokemon);
+router.post("/", postPokemon);
 
 module.exports = router;
