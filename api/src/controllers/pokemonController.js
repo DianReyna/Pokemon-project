@@ -25,9 +25,6 @@ const getPokemons = async (req, res, next) => {
 const getIdPokemon = async (req, res, next) => {
   const { idPokemon } = req.params;
 
-  if (isNaN(parseInt(idPokemon)))
-    return res.status(404).send("El valor ingresado no es un numero");
-
   try {
     const allPokemonInfo = await AllPokemons();
     let pokeFinded = allPokemonInfo.filter((e) => e.id == idPokemon);
@@ -66,8 +63,14 @@ const postPokemon = async (req, res, next) => {
       return res.status(404).json({ msg: `El Pokemon ${name} ya existe.` });
 
     if (!name) return res.json({ msg: "Nombre obligatorio" });
-    if (isNaN(name))
-      return res.send(`name: ${name} invalido, el name debe ser un string`);
+
+    for (i = 0; i < name.length; i++) {
+      if (parseInt(name[i]) === 0 || parseInt(name[i])) {
+        return res
+          .status(404)
+          .send(`name: ${name} invalido, el name debe ser un string`);
+      }
+    }
 
     let typeDb = await Type.findAll({ where: { name: types } });
 
