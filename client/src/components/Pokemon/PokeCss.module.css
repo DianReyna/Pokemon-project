@@ -1,0 +1,22 @@
+.columnas {
+  width: 100;
+}
+.card {
+  padding: 15px;
+  position: relative;
+}
+
+.imagen {
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+
+.nombreTipos h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.nombreTipos p {
+  margin: 0;
+}
