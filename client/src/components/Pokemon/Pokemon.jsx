@@ -2,7 +2,9 @@ import React from "react";
 import PokeCss from "./PokeCss.module.css";
 import { Link } from "react-router-dom";
 
-export default function Pokemon({ name, img, types, id }) {
+export default function Pokemon(props) {
+  const { name, img, types, id } = props.pokemon;
+
   return (
     <div key={name} className={PokeCss.columnas}>
       <div className={`${PokeCss.card} ${types[0]}`}>
