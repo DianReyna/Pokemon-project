@@ -2,16 +2,17 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, orderByName, reset } from "../../redux/actions";
+import { getPokemons, orderByName } from "../../redux/actions";
 
 export default function Order() {
-  const pokemons = useSelector((state) => state.filter);
-  const [, setOrder] = useState("");
+  const pokemons = useSelector((state) => state.pokemons);
+  const [order, setOrder] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPokemons());
-  }, [dispatch]);
+    dispatch(orderByName(order));
+  }, [dispatch, order]);
 
   function handleAToZ(e) {
     e.preventDefault();
@@ -21,8 +22,9 @@ export default function Order() {
       if (b.name > a.name) return -1;
       return 0;
     });
-    dispatch(orderByName(pokemonSort));
+    return setOrder(pokemonSort);
   }
+
   function handleZToA(e) {
     e.preventDefault();
 
@@ -31,8 +33,7 @@ export default function Order() {
       if (b.name > a.name) return 1;
       return 0;
     });
-    dispatch(reset());
-    dispatch(orderByName(pokemonSort));
+    return setOrder(pokemonSort);
   }
 
   function handleAttack(e) {
