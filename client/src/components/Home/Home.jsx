@@ -1,16 +1,17 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
-import { getPokemons } from "../../redux/actions";
+import SearchBar from "../SearchBar/SearchBar";
+import Types from "../Filters/Types";
+
+import Allpokemons from "../AllPokemons/AllPokemons";
+import Order from "../Filters/Order";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons);
-  const [page, sePage] = useState(1);
-  const [perPage, setPerPage] = useState(15);
-
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, [dispatch]);
+  return (
+    <div>
+      <h2>Pokemons</h2>
+      <Types />
+      <Order />
+      <SearchBar />
+      <Allpokemons />
+    </div>
+  );
 }
