@@ -3,11 +3,16 @@
 // import { useParams } from "react-router-dom";
 // import axios from "axios";
 
+import { Link } from "react-router-dom";
+
 export default function PokemonDetail(pokeDetail) {
   const { name, id, types, img, hp, attack, defense, speed, height, weight } =
     pokeDetail.pokeDetail;
   return (
     <div>
+      <button>
+        <Link to="/home">Home</Link>
+      </button>
       <div>
         <div>
           <p>#{id}</p>
