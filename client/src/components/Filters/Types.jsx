@@ -1,35 +1,36 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import typesPokemons from "../../redux/actions";
+import { filterTypes, getPokemons, typesPokemons } from "../../redux/actions";
 
 export default function Types() {
-  let type = useSelector((state) => state.types);
-  let pokemons = useSelector((state) => state.pokemons);
-  const [pokemon, setPokemon] = useState(pokemons);
-  let dispatch = useDispatch();
+  const allType = useSelector((state) => state.types);
+
+  const pokemons = useSelector((state) => state.pokemons);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(typesPokemons());
   }, [dispatch]);
 
   function handleFilter(e) {
-    if (e === "borrar") setPokemon(pokemons);
+    if (e === "allTypes") dispatch(getPokemons());
 
     let newPokemon = pokemons.filter((p) => p.types.some((t) => t === e));
-    let allType = newPokemon.map((p) => {
-      let newPokemons = { ...p };
-      return newPokemons;
+    let allTypes = newPokemon.map((p) => {
+      let filterPokemon = { ...p };
+
+      return filterPokemon;
     });
-    console.log(allType);
-    return setPokemon(allType);
+    dispatch(filterTypes(allTypes));
   }
+
   return (
-    <div className="">
-      <button onClick={() => handleFilter("borrar")}>Mostrar Todos</button>
+    <div>
+      <button onClick={() => handleFilter("allTypes")}>Mostrar Todos</button>
 
       <div>
-        {type?.map((t, index) => {
+        {allType?.map((t, index) => {
           return (
             <button key={index} onClick={() => handleFilter(t.name)}>
               {t.name}
