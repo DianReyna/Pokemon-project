@@ -4,7 +4,6 @@ const axios = require("axios");
 
 const getPokemons = async (req, res, next) => {
   const { name } = req.query;
-
   try {
     const allPokemonInfo = await AllPokemons();
     if (name) {
@@ -75,7 +74,6 @@ const postPokemon = async (req, res, next) => {
       speed,
       height,
       weight,
-      types,
       img,
     });
 

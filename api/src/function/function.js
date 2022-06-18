@@ -20,7 +20,11 @@ const AllPokemonsApi = async () => {
     })
     .then((data) => {
       return data.map((res) => res.data);
+    })
+    .catch((error) => {
+      console.log(error);
     });
+
   let arrayPokeApi = getApi.map((poke) => {
     return {
       id: poke.id,
