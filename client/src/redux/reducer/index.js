@@ -5,31 +5,30 @@ import {
   TYPES_POKEMONS,
   FILTER_TYPES,
   RESET_DETAIL,
-  RESET,
   ORDER_BY_NAME,
+  ORDER_BY_ATTACK,
+  FILTER_BY_ORIGEN,
 } from "../actions";
 
 const initialState = {
   pokemons: [],
-  backUp: [],
-  types: [],
+  allPokemons: [],
   detail: [],
-  order: [],
-  filter: [],
+  types: [],
 };
-export default function reducer(state = initialState, action) {
+export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
       return {
         ...state,
         pokemons: action.payload,
-        backUp: action.payload,
+        allPokemons: action.payload,
         filter: action.payload,
       };
     case SEARCH_POKEMON:
       return {
         ...state,
-        backUp: action.payload,
+        allPokemons: action.payload,
       };
     case GET_POKEMONS_BYID:
       return {
@@ -41,26 +40,77 @@ export default function reducer(state = initialState, action) {
         ...state,
         detail: [],
       };
-    case RESET:
-      return {
-        ...state,
-        order: action.payload,
-      };
     case TYPES_POKEMONS:
       return {
         ...state,
         types: action.payload,
       };
     case FILTER_TYPES:
+      const pokemons = state.pokemons;
+      const filtType =
+        action.payload === "allTypes"
+          ? pokemons
+          : pokemons.filter(
+              (e) =>
+                e.types.map((type) => type)[0] === action.payload ||
+                e.types.map((type) => type)[1] === action.payload
+            );
       return {
         ...state,
-        backUp: action.payload,
+        allPokemons: filtType,
       };
+
     case ORDER_BY_NAME:
-      // console.log(action.payload);
+      const pokemonSort =
+        action.payload === "aToZ"
+          ? state.allPokemons.sort((a, b) => {
+              if (a.name > b.name) return 1;
+              else {
+                return -1;
+              }
+            })
+          : state.allPokemons.sort((a, b) => {
+              if (a.name > b.name) return -1;
+              else {
+                return 1;
+              }
+            });
       return {
         ...state,
-        order: action.payload,
+        allPokemons: pokemonSort,
+      };
+
+    case ORDER_BY_ATTACK:
+      let OrderByAttack =
+        action.payload === "minToMax"
+          ? state.allPokemons.sort((a, b) => {
+              if (a.attack > b.attack) return 1;
+              if (b.attack > a.attack) return -1;
+              return 0;
+            })
+          : state.allPokemons.sort((a, b) => {
+              if (a.attack > b.attack) return -1;
+              if (b.attack > a.attack) return 1;
+              return 0;
+            });
+      return {
+        ...state,
+        allPokemons: OrderByAttack,
+      };
+    case FILTER_BY_ORIGEN:
+      const value = action.payload;
+      const filterOrigen = state.pokemons.filter((pokemons) => {
+        let resultado =
+          value === "pokemonApi"
+            ? pokemons.id < 1500
+            : value === "createdPokemon"
+            ? pokemons.id >= 1500
+            : false;
+        return resultado;
+      });
+      return {
+        ...state,
+        allPokemons: value === "allOrigin" ? state.pokemons : filterOrigen,
       };
 
     default:

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function Paginado({ currentPage, setCurrentPage, maximo }) {
   const [input, setInput] = useState(1);
-  let max = Math.floor(maximo);
+  let max = Math.ceil(maximo);
 
   const nextPage = () => {
     setInput(parseInt(input) + 1);
@@ -20,8 +20,7 @@ export default function Paginado({ currentPage, setCurrentPage, maximo }) {
 
       if (
         e.target.value === "0" ||
-        parseInt(e.target.value < 1) ||
-        parseInt(e.target.value) > Math.floor(maximo) ||
+        parseInt(e.target.value) > Math.ceil(maximo) ||
         isNaN(parseInt(e.target.value))
       ) {
         setCurrentPage(1);

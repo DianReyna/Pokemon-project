@@ -6,17 +6,18 @@ export const TYPES_POKEMONS = "TYPES_POKEMONS";
 export const GET_POKEMONS_BYID = "GET_POKEMONS_BYID";
 export const FILTER_TYPES = "FILTER_TYPES";
 export const RESET_DETAIL = "RESET_DETAIL";
-export const RESET = "RESET";
+export const POST_POKEMON = "POST_POKEMON";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
+export const FILTER_BY_ORIGEN = "FILTER_BY_ORIGEN";
 
-const URL_ALL_POKEMONS = "http://localhost:3001/api/pokemons";
-export const URL_TYPES = "http://localhost:3001/api/types";
+const URL_POKEMONS = "http://localhost:3001/api/pokemons";
+const URL_TYPES = "http://localhost:3001/api/types";
 
 export function getPokemons() {
   return async function (dispatch) {
     await axios
-      .get(URL_ALL_POKEMONS)
+      .get(URL_POKEMONS)
       .then((data) => {
         return dispatch({
           type: GET_POKEMONS,
@@ -38,7 +39,7 @@ export function searchPokemon(search) {
       return alert("El nombre solo debe contener letras.");
     }
     await axios
-      .get(`${URL_ALL_POKEMONS}/?name=${search}`)
+      .get(`${URL_POKEMONS}/?name=${search}`)
       .then((data) => {
         return dispatch({
           type: SEARCH_POKEMON,
@@ -55,7 +56,7 @@ export function searchPokemon(search) {
 export function getPokemonsById(id) {
   return async function (dispatch) {
     await axios
-      .get(`${URL_ALL_POKEMONS}/${id}`)
+      .get(`${URL_POKEMONS}/${id}`)
       .then((data) => {
         return dispatch({
           type: GET_POKEMONS_BYID,
@@ -73,9 +74,20 @@ export function resetDetail() {
     type: RESET_DETAIL,
   };
 }
-export function reset() {
-  return {
-    type: RESET_DETAIL,
+
+export function postPokemon(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(URL_POKEMONS, payload)
+      .then((data) => {
+        return dispatch({
+          type: POST_POKEMON,
+          payload: data.data,
+        });
+      })
+      .catch((error) => {
+        return alert("Hubo un error al crear al Pokemon.");
+      });
   };
 }
 
@@ -97,33 +109,29 @@ export function typesPokemons() {
 }
 
 export function filterTypes(payload) {
-  try {
-    return {
-      type: FILTER_TYPES,
-      payload,
-    };
-  } catch (error) {
-    console.log(error.message);
-    return alert("Error: la busqueda de este filtro falló");
-  }
+  return {
+    type: FILTER_TYPES,
+    payload,
+  };
 }
 
 export function orderByName(payload) {
-  // console.log(payload);
-  try {
-    return {
-      type: ORDER_BY_NAME,
-      payload,
-    };
-  } catch (error) {
-    console.log(error.message);
-    return alert("Error: fallo el ordenamiento");
-  }
+  return {
+    type: ORDER_BY_NAME,
+    payload,
+  };
 }
 
 export function orderByAttack(payload) {
   return {
     type: ORDER_BY_ATTACK,
+    payload,
+  };
+}
+
+export function filterByOrigen(payload) {
+  return {
+    type: FILTER_BY_ORIGEN,
     payload,
   };
 }

@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterTypes, getPokemons, typesPokemons } from "../../redux/actions";
+import { filterTypes, typesPokemons } from "../../redux/actions";
 
-export default function Types() {
+export default function Types(pokeData, setTypes, setCurrentPage) {
   const allType = useSelector((state) => state.types);
-
-  const pokemons = useSelector((state) => state.pokemons);
-
+  let pokemons = pokeData.pokemons;
+  console.log(pokeData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +13,7 @@ export default function Types() {
   }, [dispatch]);
 
   function handleFilter(e) {
-    if (e === "allTypes") dispatch(getPokemons());
+    if (e === "allTypes") dispatch(filterTypes(pokemons));
 
     let newPokemon = pokemons.filter((p) => p.types.some((t) => t === e));
     let allTypes = newPokemon.map((p) => {
@@ -22,17 +21,23 @@ export default function Types() {
 
       return filterPokemon;
     });
+
+    e.preventDefault();
     dispatch(filterTypes(allTypes));
+    setCurrentPage.setCurrentPage(1);
+    setTypes(e.target.value);
   }
 
   return (
     <div>
-      <button onClick={() => handleFilter("allTypes")}>Mostrar Todos</button>
+      <button value="allTypes" onClick={handleFilter}>
+        Mostrar Todos
+      </button>
 
       <div>
         {allType?.map((t, index) => {
           return (
-            <button key={index} onClick={() => handleFilter(t.name)}>
+            <button key={index} value={t.name} onClick={handleFilter}>
               {t.name}
             </button>
           );

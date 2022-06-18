@@ -1,15 +1,17 @@
 import SearchBar from "../SearchBar/SearchBar";
-import Types from "../Filters/Types";
 
 import Allpokemons from "../AllPokemons/AllPokemons";
-import Order from "../Filters/Order";
+import Filters from "../Filters/Filters";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <div>
       <h2>Pokemons</h2>
-      <Types />
-      <Order />
+      <Link to="/create">
+        <li>Create</li>
+      </Link>
+      <Filters />
       <SearchBar />
       <Allpokemons />
     </div>
