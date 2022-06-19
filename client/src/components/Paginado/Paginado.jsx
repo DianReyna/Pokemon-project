@@ -4,6 +4,10 @@ export default function Paginado({ currentPage, setCurrentPage, maximo }) {
   const [input, setInput] = useState(1);
   let max = Math.ceil(maximo);
 
+  if (input !== currentPage) {
+    setInput(parseInt(currentPage));
+  }
+
   const nextPage = () => {
     setInput(parseInt(input) + 1);
     setCurrentPage(parseInt(currentPage) + 1);
