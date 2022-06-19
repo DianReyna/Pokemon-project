@@ -7,7 +7,7 @@ import {
   orderByName,
 } from "../../redux/actions";
 
-export default function Filters() {
+export default function Filters(setCurrentPage) {
   const [, setOrder] = useState("");
 
   const dispatch = useDispatch();
@@ -19,24 +19,21 @@ export default function Filters() {
   function handleFilterOrigin(e) {
     e.preventDefault();
     dispatch(filterByOrigen(e.target.value));
+    setCurrentPage.setCurrentPage(1);
   }
-
-  // function handleFilterByTypes(e) {
-  //   e.preventDefault();
-  //   dispatch(filterTypes(e.target.value));
-  //   setTypes(e.target.value);
-  // }
 
   function handleFilterName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     setOrder(`Order by ${e.target.value}`);
+    setCurrentPage.setCurrentPage(1);
   }
 
   function handleOrderByAttack(e) {
     e.preventDefault();
     dispatch(orderByAttack(e.target.value));
     setOrder(`Order by ${e.target.value}`);
+    setCurrentPage.setCurrentPage(1);
   }
 
   return (
@@ -67,7 +64,7 @@ export default function Filters() {
         </button>
       </div>
 
-      <button onClick={handleReset}>Reload</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }
