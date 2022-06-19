@@ -1,7 +1,7 @@
 import SearchBar from "../SearchBar/SearchBar";
 
 import Allpokemons from "../AllPokemons/AllPokemons";
-import Filters from "../Filters/Filters";
+
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <Link to="/create">
         <li>Create</li>
       </Link>
-      <Filters />
+
       <SearchBar />
       <Allpokemons />
     </div>

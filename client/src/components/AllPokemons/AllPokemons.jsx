@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getPokemons } from "../../redux/actions";
+import Filters from "../Filters/Filters";
 import Type from "../Filters/Type";
 
 import Paginado from "../Paginado/Paginado";
@@ -34,6 +35,7 @@ export default function Allpokemons() {
   return (
     <div>
       <Type setCurrentPage={setCurrentPage} />
+      <Filters setCurrentPage={setCurrentPage} />
 
       <div className={AllPokeCss.columnas}>
         {pokemonData?.map((pokemon) => {
