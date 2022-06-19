@@ -23,6 +23,7 @@ export default function Create() {
   useEffect(() => {
     dispatch(typesPokemons());
   });
+
   function handleInputChange(e) {
     setInput({
       ...input,
@@ -63,6 +64,7 @@ export default function Create() {
       weight: input.weight,
       types: input.types,
     };
+
     dispatch(postPokemon(newPokemon));
 
     setInput({
@@ -164,7 +166,9 @@ export default function Create() {
         ))}
       </h5>
 
-      <button type="submit">Create</button>
+      <button value="submit" type="submit">
+        Create
+      </button>
     </form>
   );
 }
