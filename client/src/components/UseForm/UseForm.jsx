@@ -6,12 +6,11 @@ import { postPokemon, typesPokemons } from "../../redux/actions";
 export function UseForm(initialForm, validate) {
   const [form, setForm] = useState(initialForm);
   const [errors, seterrors] = useState({});
-  //  const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   const allTypes = useSelector((state) => state.types);
-  // const pokemon = useSelector((state) => state.pokemons);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(typesPokemons());
@@ -73,6 +72,7 @@ export function UseForm(initialForm, validate) {
         speed: form.speed,
         height: form.height,
         weight: form.weight,
+        img: form.img,
         types: form.types,
       };
       dispatch(postPokemon(newPokemon));
@@ -84,6 +84,7 @@ export function UseForm(initialForm, validate) {
         speed: "",
         height: "",
         weight: "",
+        img: "",
         types: [],
       });
       alert("Pokemon creado");

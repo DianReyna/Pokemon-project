@@ -1,0 +1,139 @@
+.views {
+  background-color: black;
+  width: 50%;
+}
+.detail_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rosybrown;
+  width: 80%;
+  margin-top: 8%;
+  margin-left: 10%;
+  height: 90%;
+  border-radius: 30px;
+  /* background: #e9e7e7;
+  /* box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;  */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.navContainer {
+  width: 100%;
+}
+
+.id_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  height: 2rem;
+}
+.pokeId {
+  display: flex;
+  font-size: medium;
+  flex-direction: row;
+  margin-right: 1.7rem;
+  justify-content: flex-end;
+  height: 1.8rem;
+  width: 5rem;
+  border-radius: 1rem;
+  align-items: center;
+  background-color: gold;
+}
+
+#id,
+#idpokemon {
+  height: 1.2rem;
+  align-items: center;
+  margin-right: 30%;
+  display: flex;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+#id {
+  margin-right: 0.3rem;
+}
+
+.pokeImg {
+  display: flex;
+  justify-content: center;
+  background-color: brown;
+  width: 45%;
+  height: 40%;
+  display: flex;
+  margin-top: 15px;
+}
+.image {
+  top: 1px;
+  width: 220px;
+}
+
+.pokeName {
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+  width: 100%;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+#name,
+#namepokemon {
+  margin-left: 1rem;
+}
+
+.ContainerTypes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.2rem;
+  width: 100%;
+  background-color: blue;
+}
+.type {
+  display: flex;
+}
+
+.divtype {
+  margin-left: 1rem;
+}
+.btntype {
+  margin-left: 0.5rem;
+}
+
+#pokeTypes {
+  display: flex;
+  align-content: center;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  height: 1.6rem;
+  width: 6rem;
+  justify-content: center;
+}
+
+#text {
+  font-size: medium;
+  font-weight: bold;
+  margin: 0;
+}
+
+.power {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  font-size: large;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.cont_name {
+  margin-right: 1rem;
+}

@@ -3,12 +3,6 @@ import "./PikachuLoaderCss.css";
 export default function PikachuLoader() {
   return (
     <div className="containerpikachu">
-      <div className="mover">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <div className="Pikachu">
         <div className="loading">
           <img
@@ -17,12 +11,6 @@ export default function PikachuLoader() {
           />
         </div>
         <div className="mouse original"></div>
-      </div>
-      <div className="mover">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
       </div>
     </div>
   );
