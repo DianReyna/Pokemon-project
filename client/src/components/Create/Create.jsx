@@ -1,14 +1,10 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { postPokemon, typesPokemons } from "../../redux/actions";
+import { UseForm } from "../UseForm/UseForm";
+import { Validate } from "./Validate";
+import CreateCss from "./CreateCss.module.css";
 
 export default function Create() {
-  const allTypes = useSelector((state) => state.types);
-  const allPokemons = useSelector((state) => state.allPokemons);
-
-  const [input, setInput] = useState({
+  const initialForm = {
     name: "",
     hp: "",
     attack: "",
@@ -17,71 +13,23 @@ export default function Create() {
     height: "",
     weight: "",
     types: [],
-  });
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(typesPokemons());
-  });
-
-  function handleInputChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  }
-  function handleTypeChange(e) {
-    setInput({
-      ...input,
-      types: [...input.types, e.target.value],
-    });
-  }
-
-  function handleDeleteType(el) {
-    setInput({
-      ...input,
-      types: input.types.filter((t) => t !== el),
-    });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    let find = allPokemons.filter(
-      (p) => p.name.toLowerCase() === input.name.toLowerCase()
-    );
-
-    if (find) {
-      return alert("Ya existe un Pokemons con este nombre");
-    }
-
-    const newPokemon = {
-      name: input.name,
-      hp: input.hp,
-      attack: input.attack,
-      defense: input.defense,
-      speed: input.speed,
-      height: input.height,
-      weight: input.weight,
-      types: input.types,
-    };
-
-    dispatch(postPokemon(newPokemon));
-
-    setInput({
-      name: "",
-      hp: "",
-      attack: "",
-      defense: "",
-      speed: "",
-      height: "",
-      weight: "",
-      types: [],
-    });
-    return alert(`El Pokémon fue creado con éxito.`);
-  }
+  };
+  const {
+    form,
+    errors,
+    // loading,
+    // response,
+    allTypes,
+    disabled,
+    handleChange,
+    handleTypeChange,
+    handleBlur,
+    handleDeleteType,
+    handleSubmit,
+  } = UseForm(initialForm, Validate);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <Link to="/home">
         <span></span>
         <span></span>
@@ -90,85 +38,195 @@ export default function Create() {
         <span></span>
       </Link>
 
-      <label>Name:</label>
-      <input
-        type="text"
-        onChange={handleInputChange}
-        value={input.name}
-        name="name"
-      ></input>
+      <form onSubmit={handleSubmit}>
+        <div className={CreateCss.formulario}>
+          <div className={CreateCss.form_group}>
+            <label className={CreateCss.name_label}>Name:</label>
+            <input
+              className={CreateCss.form_control}
+              type="text"
+              name="name"
+              placeholder="Pokemon name"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.name}
+              required
+            />
+            {errors.name && <p className={CreateCss.error}>{errors.name}</p>}
+          </div>
 
-      <label>Hp:</label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.hp}
-        name="hp"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label className={CreateCss.name_label}>Imagen:</label>
+            <input
+              className={CreateCss.form_control}
+              type="text"
+              name="img"
+              placeholder="Pokemon url-imagen"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.img}
+              required
+            />
+          </div>
 
-      <label>Attack: </label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.attack}
-        name="attack"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label>Hp:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="hp"
+              placeholder="Health point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.hp}
+            />
+            {errors.hp && <p className={CreateCss.error}>{errors.hp}</p>}
+          </div>
 
-      <label>Defense:</label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.defense}
-        name="defense"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label>Attack:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="attack"
+              placeholder="Attack point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.attack}
+            />
+            {errors.attack && (
+              <p className={CreateCss.error}>{errors.attack}</p>
+            )}
+          </div>
 
-      <label>Speed:</label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.speed}
-        name="speed"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label>Defense:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="defense"
+              placeholder="Defense point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.defense}
+              required
+            />
+            {errors.defense && (
+              <p className={CreateCss.error}>{errors.defense}</p>
+            )}
+          </div>
 
-      <label>Weight:</label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.weight}
-        name="weight"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label>Speed:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="speed"
+              placeholder="Speed point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.speed}
+              required
+            />
+            {errors.speed && <p className={CreateCss.error}>{errors.speed}</p>}
+          </div>
 
-      <label>Height:</label>
-      <input
-        type="number"
-        onChange={handleInputChange}
-        value={input.height}
-        name="height"
-      ></input>
+          <div className={CreateCss.form_group}>
+            <label>Weight:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="weight"
+              placeholder="Weight point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.weight}
+              required
+            />
+            {errors.weight && (
+              <p className={CreateCss.error}>{errors.weight}</p>
+            )}
+          </div>
 
-      <label>Type:</label>
-      <select
-        type="number"
-        onChange={handleTypeChange}
-        value={input.types}
-        name="types"
-      >
-        {allTypes.map((e) => (
-          <option value={e.name}>{e.name}</option>
-        ))}
-      </select>
-      <h5>
-        {input.types?.map((el) => (
-          <p className="nameType">
-            {el}
-            <button onClick={(e) => handleDeleteType(el)}>delete</button>
-          </p>
-        ))}
-      </h5>
+          <div className={CreateCss.form_group}>
+            <label>Height:</label>
+            <input
+              className={CreateCss.form_control}
+              type="number"
+              name="height"
+              placeholder="Height point"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={form.height}
+              required
+            />
+            {errors.height && (
+              <p className={CreateCss.error}>{errors.height}</p>
+            )}
+          </div>
+          <label>Types:</label>
+          <div className={CreateCss.select}>
+            {/* <label>Types:</label>
+            {allTypes?.map((t, index) => {
+              return (
+                <div
+                  className={CreateCss.conten_input_checkbox}
+                  key={index}
+                  value={form.types}
+                  name="types"
+                  onChange={handleTypeChange}
+                >
+                  <input
+                    type="checkbox"
+                    className={CreateCss.input_checkbox}
+                    value={t.name}
+                  />
+                  <label key={index}>{t.name}</label>
+                </div>
+              );
+            })}
+            {errors.types && <p className={CreateCss.error}>{errors.types}</p>} */}
 
-      <button value="submit" type="submit">
-        Create
-      </button>
-    </form>
+            <select
+              value={form.types}
+              name="types"
+              type="select-multiple"
+              multiple={true}
+              className={CreateCss.standard_select}
+              onChange={handleTypeChange}
+            >
+              {allTypes?.map((e, index) => (
+                <option key={index} value={e.name}>
+                  {e.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            {form.types?.map((type, index) => (
+              <p key={index}>
+                {type}
+                <button onClick={(e) => handleDeleteType(type)}>X</button>
+              </p>
+            ))}
+          </div>
+
+          <button
+            className={CreateCss.btn}
+            value="create"
+            type="submit"
+            disabled={disabled}
+          >
+            Create
+          </button>
+        </div>
+      </form>
+
+      {/* {loading && <Loader/>}
+    {response &&(
+      <Message msg="Los datos han sido enviado"/>
+    )} */}
+    </div>
   );
 }

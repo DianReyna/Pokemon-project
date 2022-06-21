@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./PaginadoCss.css";
 export default function Paginado({ currentPage, setCurrentPage, maximo }) {
   const [input, setInput] = useState(1);
   let max = Math.ceil(maximo);
@@ -40,27 +40,41 @@ export default function Paginado({ currentPage, setCurrentPage, maximo }) {
   };
 
   return (
-    <div>
-      <button
-        disabled={currentPage === 1 || currentPage < 1}
-        onClick={previousPage}
-      >
-        Prev
-      </button>
-      <input
-        onChange={(e) => onChange(e)}
-        onKeyDown={(e) => onKeyDown(e)}
-        name="page"
-        autoComplete="off"
-        value={input}
-      />
-      <p> de {max} </p>
-      <button
-        disabled={currentPage === max || currentPage > max}
-        onClick={nextPage}
-      >
-        Next
-      </button>
+    <div className="container_pag">
+      <div>
+        <button
+          className="btn_prev"
+          disabled={currentPage === 1 || currentPage < 1}
+          onClick={previousPage}
+        >
+          «
+        </button>
+      </div>
+
+      <div>
+        <input
+          className="input"
+          onChange={(e) => onChange(e)}
+          onKeyDown={(e) => onKeyDown(e)}
+          name="page"
+          autoComplete="off"
+          value={input}
+        />
+      </div>
+
+      <div>
+        <p className="pmax"> de {max} </p>
+      </div>
+
+      <div>
+        <button
+          className="btn_next"
+          disabled={currentPage === max || currentPage > max}
+          onClick={nextPage}
+        >
+          »
+        </button>
+      </div>
     </div>
   );
 }

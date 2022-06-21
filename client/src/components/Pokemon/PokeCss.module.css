@@ -1,15 +1,24 @@
 .columnas {
-  width: 100;
+  width: 10rem;
+  /* background-color: bisque; */
 }
 .card {
-  padding: 15px;
+  display: flex;
+  text-align: center;
   position: relative;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding: 20px 72px 6px 19px;
+  /* margin-bottom: 1rem; */
+  background-color: black;
 }
-
-.imagen {
+.all {
+  display: flex;
+}
+.img {
   position: absolute;
-  right: 15px;
-  top: 0;
+  right: 0.5rem;
+  top: 27px;
 }
 
 .nombreTipos h3 {
@@ -17,6 +26,26 @@
   margin: 0;
 }
 
-.nombreTipos p {
-  margin: 0;
+.nombreTipos {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.tipo {
+  color: #fff;
+  background-color: rgba(255, 255, 230, 0.3);
+  margin-bottom: 4px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 2px 10px;
+  text-transform: capitalize;
+  font-size: 14px;
+  place-self: flex-start;
+}
+
+.tipos {
+  display: flex;
+  flex-shrink: wrap;
+  flex-direction: column;
 }

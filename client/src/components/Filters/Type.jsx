@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterTypes, typesPokemons } from "../../redux/actions";
+import "./TypeCss.css";
 
 export default function Type(setCurrentPage) {
   const totalTypes = useSelector((state) => state.types);
@@ -19,15 +20,24 @@ export default function Type(setCurrentPage) {
   }
 
   return (
-    <div>
-      <button value="allTypes" onClick={handleFilterByTypes}>
-        Mostrar Todos
+    <div className="filtro_type">
+      <button
+        className="btn_todos"
+        value="allTypes"
+        onClick={handleFilterByTypes}
+      >
+        Show all
       </button>
-
-      <div>
+      <div className="botones">
         {totalTypes?.map((t, index) => {
           return (
-            <button key={index} value={t.name} onClick={handleFilterByTypes}>
+            <button
+              className={` ${t.name}`}
+              id="btn_filtro"
+              key={index}
+              value={t.name}
+              onClick={handleFilterByTypes}
+            >
               {t.name}
             </button>
           );

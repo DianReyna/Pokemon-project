@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPokemon } from "../../redux/actions";
+import "./Search.css";
 
 export default function SearchBar() {
   const [search, setSerch] = useState("");
@@ -17,15 +18,25 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="searchPokemon">
       <input
         value={search}
         onChange={(e) => handleInputChange(e)}
         type="text"
-        placeholder="Pokemon name"
+        placeholder="Search Pokemon"
       />
-      <button onClick={(e) => handleSubmit(e)} type="submit">
-        Buscar
+      <button
+        className="button-search"
+        onClick={(e) => handleSubmit(e)}
+        type="submit"
+      >
+        <div className="button-content">
+          Search
+          <img
+            src="http://www.purarteadesivos.com.br/wp-content/uploads/2017/04/Pok%C3%A9mon-go.png"
+            alt="pokebola"
+          />
+        </div>
       </button>
     </div>
   );

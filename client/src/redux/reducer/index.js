@@ -97,20 +97,19 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         allPokemons: OrderByAttack,
       };
+
     case FILTER_BY_ORIGEN:
       const value = action.payload;
-      const filterOrigen = state.pokemons.filter((pokemons) => {
-        let resultado =
-          value === "pokemonApi"
-            ? pokemons.id < 1500
-            : value === "createdPokemon"
-            ? pokemons.id >= 1500
-            : false;
-        return resultado;
-      });
+      const filterOrigen = state.pokemons.filter((pokemon) =>
+        pokemon.id.toString().includes("-")
+      );
+      const filterApi = state.pokemons.filter(
+        (pokemon) => !pokemon.id.toString().includes("-")
+      );
+
       return {
         ...state,
-        allPokemons: value === "allOrigin" ? state.pokemons : filterOrigen,
+        allPokemons: value === "pokeApi" ? filterApi : filterOrigen,
       };
 
     default:

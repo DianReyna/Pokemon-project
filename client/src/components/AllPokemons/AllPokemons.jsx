@@ -7,7 +7,7 @@ import Type from "../Filters/Type";
 
 import Paginado from "../Paginado/Paginado";
 import Pokemon from "../Pokemon/Pokemon";
-import AllPokeCss from "./AllPokeCss.module.css";
+import AllPoke from "./AllPokeCss.module.css";
 
 export default function Allpokemons() {
   let pokemons = useSelector((state) => state.allPokemons);
@@ -33,20 +33,31 @@ export default function Allpokemons() {
   }, [dispatch]);
 
   return (
-    <div>
-      <Type setCurrentPage={setCurrentPage} />
-      <Filters setCurrentPage={setCurrentPage} />
-
-      <div className={AllPokeCss.columnas}>
-        {pokemonData?.map((pokemon) => {
-          return <Pokemon key={pokemon.id} pokemon={pokemon} />;
-        })}
+    <div className={AllPoke.container}>
+      <div className={AllPoke.types}>
+        <Type setCurrentPage={setCurrentPage} />
       </div>
-      <Paginado
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        maximo={maximo}
-      />
+      <div className={AllPoke.container_two}>
+        <div className={AllPoke.filters}>
+          <Filters setCurrentPage={setCurrentPage} />
+        </div>
+        <div className={AllPoke.container_three}>
+          <div className={AllPoke.group}>
+            <div className={AllPoke.container_colum}>
+              {pokemonData?.map((pokemon) => {
+                return <Pokemon key={pokemon.id} pokemon={pokemon} />;
+              })}
+            </div>
+          </div>
+          <div className={AllPoke.paginado}>
+            <Paginado
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              maximo={maximo}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

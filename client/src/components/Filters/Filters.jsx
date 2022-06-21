@@ -7,6 +7,8 @@ import {
   orderByName,
 } from "../../redux/actions";
 
+import "./FiltersCss.css";
+
 export default function Filters(setCurrentPage) {
   const [, setOrder] = useState("");
 
@@ -37,34 +39,76 @@ export default function Filters(setCurrentPage) {
   }
 
   return (
-    <div>
-      <div>
-        <button value={"pokemonApi"} onClick={handleFilterOrigin}>
-          PokeApi
-        </button>
-        <button value={"allOrigin"} onClick={handleFilterOrigin}>
-          Creado
-        </button>
+    <div className="filt_container">
+      <div id="title">
+        <p>Filters</p>
+      </div>
+
+      <div className="container_btn">
+        <div className="container_btn1">
+          <button
+            className="btn"
+            value={"pokeApi"}
+            onClick={handleFilterOrigin}
+          >
+            Existing
+          </button>
+        </div>
+
+        <div>
+          <button
+            className="btn"
+            value={"allOrigin"}
+            onClick={handleFilterOrigin}
+          >
+            Created
+          </button>
+        </div>
       </div>
 
       <div>
-        <button value={"aToZ"} onClick={handleFilterName}>
-          A-Z
-        </button>
-        <button value={"zToA"} onClick={handleFilterName}>
-          Z-A
-        </button>
+        <p className="title">Order</p>
+      </div>
+      <div className="container_btn">
+        <div className="container_btn1">
+          <button className="btn" value={"aToZ"} onClick={handleFilterName}>
+            A-Z
+          </button>
+        </div>
+        <div>
+          <button className="btn" value={"zToA"} onClick={handleFilterName}>
+            Z-A
+          </button>
+        </div>
       </div>
       <div>
-        <button value={"minToMax"} onClick={handleOrderByAttack}>
-          min a max
-        </button>
-        <button value={"maxToMin"} onClick={handleOrderByAttack}>
-          max a min
-        </button>
+        <p className="title">Attack power</p>
+      </div>
+      <div className="container_btn">
+        <div className="container_btn1">
+          <button
+            className="btn"
+            value={"minToMax"}
+            onClick={handleOrderByAttack}
+          >
+            min a max
+          </button>
+        </div>
+
+        <div>
+          <button
+            className="btn"
+            value={"maxToMin"}
+            onClick={handleOrderByAttack}
+          >
+            max a min
+          </button>
+        </div>
       </div>
 
-      <button onClick={handleReset}>Reset</button>
+      <button id="reset" className="btn" onClick={handleReset}>
+        Reset
+      </button>
     </div>
   );
 }

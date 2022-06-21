@@ -1,0 +1,61 @@
+.searchPokemon {
+  width: 600px;
+  text-align: center;
+  margin: 15px auto;
+}
+
+.searchPokemon input {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-bottom: solid 1.8px #a6131e;
+  font-size: 14px;
+  color: #a6131e;
+  width: 35%;
+  transition: all 1s ease;
+  right: 0;
+  font-weight: bold;
+}
+
+.searchPokemon input::placeholder {
+  color: #800009;
+  font-weight: bold;
+}
+
+.searchPokemon input:focus {
+  outline: none;
+  border-color: #a6131e;
+}
+
+button.button-search {
+  background: #fff;
+  border: transparent;
+  cursor: pointer;
+  width: 100px;
+  padding: 4px;
+  color: #800009;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.6s;
+}
+
+button.button-search img {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+button.button-search:focus {
+  outline: none;
+}
+
+.button-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button.button-search:active {
+  transform: scale(1.1);
+}
