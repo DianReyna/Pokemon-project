@@ -1,8 +1,5 @@
-import SearchBar from "../SearchBar/SearchBar";
-
 import Allpokemons from "../AllPokemons/AllPokemons";
 import HomeCss from "./HomeCss.module.css";
-import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 
 export default function Home() {

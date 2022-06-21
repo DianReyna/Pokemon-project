@@ -1,20 +1,27 @@
-.columnas {
-  width: 10rem;
-  /* background-color: bisque; */
-}
 .card {
   display: flex;
   text-align: center;
   position: relative;
   margin-top: 1rem;
-  border-radius: 0.5rem;
-  padding: 20px 72px 6px 19px;
-  /* margin-bottom: 1rem; */
-  background-color: black;
+  cursor: pointer;
+  width: 15rem;
+  height: 8rem;
+  border: 1.5px inset white;
+  box-shadow: inset 20px 20px 60px #f2f2f2, inset -20px -20px 60px #ffffff;
+  transition: all 0.5s ease-in-out;
+  border-radius: 1.5rem;
+  font-weight: bolder;
 }
+
+.card:hover {
+  transform: translateY(-8px);
+  transition: all 0.5s ease-in-out;
+}
+
 .all {
   display: flex;
 }
+
 .img {
   position: absolute;
   right: 0.5rem;
@@ -22,19 +29,22 @@
 }
 
 .nombreTipos h3 {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
   font-size: 1.2rem;
-  margin: 0;
 }
 
 .nombreTipos {
   display: flex;
   flex-direction: column;
   padding: 0;
+  margin-left: 1rem;
 }
 
-.tipo {
+#tipo {
   color: #fff;
-  background-color: rgba(255, 255, 230, 0.3);
+  /* background-color: rgba(255, 255, 230, 0.3); */
+  margin-top: 0;
   margin-bottom: 4px;
   border-radius: 20px;
   text-align: center;

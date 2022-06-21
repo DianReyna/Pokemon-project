@@ -6,29 +6,36 @@ export default function Pokemon(props) {
   const { name, img, types, id } = props.pokemon;
 
   return (
-    // <div className={`${PokeCss.card} ${types[0]}`}>
     <div className={`${PokeCss.card}`}>
-      <div className={PokeCss.nombreTipos}>
-        <Link to={`/detail/${id}`}>
-          <h3>{name}</h3>
-        </Link>
+      <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
+        <div className={PokeCss.nombreTipos}>
+          <div className={PokeCss.pokenombre}>
+            <h3>{name}</h3>
+          </div>
 
-        <div className={PokeCss.all}>
-          <div className={PokeCss.tipos}>
-            <p className={PokeCss.tipo}>{types[0]}</p>
-            <p className={PokeCss.tipo}>{types[1]}</p>
+          <div className={PokeCss.all}>
+            <div className={PokeCss.tipos}>
+              {types.length === 2 ? (
+                <div>
+                  <p id={PokeCss.tipo} className={types[0]}>
+                    {types[0]}
+                  </p>
+                  <p id={PokeCss.tipo} className={types[1]}>
+                    {types[1]}
+                  </p>
+                </div>
+              ) : (
+                <p id={PokeCss.tipo} className={types[0]}>
+                  {types[0]}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className={PokeCss.img}>
+            <img src={img} alt="imagen-pokemon" height={100} width={100} />
           </div>
         </div>
-        <div className={PokeCss.img}>
-          <img
-            src={img}
-            alt="imagen-pokemon"
-            height={100}
-            width={100}
-            // className={PokeCss.img}
-          />
-        </div>
-      </div>
+      </Link>
     </div>
   );
 }

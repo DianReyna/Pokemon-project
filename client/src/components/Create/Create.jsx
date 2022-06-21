@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { UseForm } from "../UseForm/UseForm";
 import { Validate } from "./Validate";
 import CreateCss from "./CreateCss.module.css";
+import BotonesNav from "../BotonesNav/BotonesNav";
 
 export default function Create() {
   const initialForm = {
@@ -30,14 +30,9 @@ export default function Create() {
 
   return (
     <div>
-      <Link to="/home">
-        <span></span>
-        <span></span>
-        Home
-        <span></span>
-        <span></span>
-      </Link>
-
+      <div>
+        <BotonesNav />
+      </div>
       <form onSubmit={handleSubmit}>
         <div className={CreateCss.formulario}>
           <div className={CreateCss.form_group}>

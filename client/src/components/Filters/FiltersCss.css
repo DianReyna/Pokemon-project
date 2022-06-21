@@ -4,7 +4,7 @@
   height: 100%;
   width: 100%;
   border-radius: 5px;
-  background: #e0e0e0;
+  background: #a1a7d8ba;
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }
 
@@ -48,6 +48,7 @@
   font-weight: 500;
   color: black;
   background-color: white;
+  cursor: pointer;
 }
 
 .btn:hover {

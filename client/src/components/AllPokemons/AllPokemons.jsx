@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../redux/actions";
 import Filters from "../Filters/Filters";
 import Type from "../Filters/Type";
+import PikachuLoader from "../Loader/PikachuLoader";
 
 import Paginado from "../Paginado/Paginado";
 import Pokemon from "../Pokemon/Pokemon";
@@ -42,12 +43,16 @@ export default function Allpokemons() {
           <Filters setCurrentPage={setCurrentPage} />
         </div>
         <div className={AllPoke.container_three}>
-          <div className={AllPoke.group}>
-            <div className={AllPoke.container_colum}>
-              {pokemonData?.map((pokemon) => {
+          <div className={AllPoke.container_colum}>
+            {pokemonData.length === 0 ? (
+              <div className="AllPoke.loaderpika">
+                <PikachuLoader />
+              </div>
+            ) : (
+              pokemonData?.map((pokemon) => {
                 return <Pokemon key={pokemon.id} pokemon={pokemon} />;
-              })}
-            </div>
+              })
+            )}
           </div>
           <div className={AllPoke.paginado}>
             <Paginado

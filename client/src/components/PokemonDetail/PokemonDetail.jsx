@@ -1,4 +1,4 @@
-import NavBar from "../NavBar/NavBar.jsx";
+import BotonesNav from "../BotonesNav/BotonesNav.jsx";
 import "./DetailCss.css";
 export default function PokemonDetail(pokeDetail) {
   const { name, id, types, img, hp, attack, defense, speed, height, weight } =
@@ -6,7 +6,7 @@ export default function PokemonDetail(pokeDetail) {
   return (
     <div className="container">
       <div className="navContainer">
-        <NavBar />
+        <BotonesNav />
       </div>
       <div id="card" className="detail_container">
         <div className="id_container">
