@@ -62,8 +62,8 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.img}
-                required
               />
+              {errors.img && <p className={CreateCss.error}>{errors.img}</p>}
             </div>
             <div className={CreateCss.form_group}>
               <label>Hp:</label>
@@ -75,6 +75,7 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.hp}
+                required
               />
               {errors.hp && <p className={CreateCss.error}>{errors.hp}</p>}
             </div>
@@ -105,7 +106,6 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.defense}
-                required
               />
               {errors.defense && (
                 <p className={CreateCss.error}>{errors.defense}</p>
@@ -122,7 +122,6 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.speed}
-                required
               />
               {errors.speed && (
                 <p className={CreateCss.error}>{errors.speed}</p>
@@ -139,7 +138,6 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.weight}
-                required
               />
               {errors.weight && (
                 <p className={CreateCss.error}>{errors.weight}</p>
@@ -156,7 +154,6 @@ export default function Create() {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.height}
-                required
               />
               {errors.height && (
                 <p className={CreateCss.error}>{errors.height}</p>
@@ -172,22 +169,23 @@ export default function Create() {
                 className={CreateCss.standard_select}
                 onChange={handleTypeChange}
               >
-                {allTypes?.map((e, index) => (
-                  <option key={index} value={e.name}>
-                    {e.name}
-                  </option>
-                ))}
+                {allTypes &&
+                  allTypes
+                    .sort(function (a, b) {
+                      if (a.name < b.name) return -1;
+                      if (a.name > b.name) return 1;
+                      return 0;
+                    })
+                    .map((e, index) => (
+                      <option key={index} value={e.name}>
+                        {e.name}
+                      </option>
+                    ))}
               </select>
+              {errors.types && (
+                <p className={CreateCss.error}>{errors.types}</p>
+              )}
             </div>
-
-            {/* <div>
-              {form.types?.map((type, index) => (
-                <p key={index}>
-                  {type}
-                  <button onClick={(e) => handleDeleteType(type)}>X</button>
-                </p>
-              ))}
-            </div> */}
 
             <button
               className={CreateCss.btn}
@@ -203,7 +201,13 @@ export default function Create() {
         <div className={Prev.views}>
           <div id="card" className={Prev.detail_container}>
             <div className={Prev.pokeImg}>
-              {form.img.length === 0 ? (
+              {errors.hasOwnProperty("types") ? (
+                <img
+                  className={Prev.image}
+                  src="https://c.tenor.com/IdQJwgoeSNwAAAAC/pokemon-what.gif"
+                  alt="error?"
+                />
+              ) : form.img.length === 0 ? (
                 <div className={Prev.egg}>
                   <Egg />
                 </div>
@@ -226,7 +230,7 @@ export default function Create() {
             <div className={Prev.ContainerTypes}>
               <div className={Prev.positiontype}>
                 {form.types?.map((type, index) => (
-                  <div className={Prev.type}>
+                  <div key={index} className={Prev.type}>
                     <div className={`${Prev.divtype} ${type} `} key={index}>
                       {type}
                       <button

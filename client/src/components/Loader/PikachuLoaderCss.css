@@ -1,14 +1,7 @@
-/* * {
-  cursor: none;
-} */
-
-/* body {
-  overflow: hidden;
-} */
 .containerpikachu {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 70%;
 }
 
 .loading {
@@ -19,20 +12,9 @@
 
 .loading img {
   display: block;
-  min-height: 209px;
-  min-width: 200px;
+  min-height: 50px;
+  min-width: 100px;
 }
-
-/* .mouse {
-  width: 25px;
-  height: 25px;
-  border-radius: 100%;
-  background-color: #fff782;
-  position: absolute;
-  animation: mouseAnimation 0.5s infinite ease-in-out alternate;
-  left: 0;
-  top: 0;
-} */
 
 @keyframes mouseAnimation {
   from {

@@ -29,19 +29,26 @@ export default function Type(setCurrentPage) {
         Show all
       </button>
       <div className="botones">
-        {totalTypes?.map((t, index) => {
-          return (
-            <button
-              className={` ${t.name}`}
-              id="btn_filtro"
-              key={index}
-              value={t.name}
-              onClick={handleFilterByTypes}
-            >
-              {t.name}
-            </button>
-          );
-        })}
+        {totalTypes &&
+          totalTypes
+            .sort(function (a, b) {
+              if (a.name < b.name) return -1;
+              if (a.name > b.name) return 1;
+              return 0;
+            })
+            .map((t, index) => {
+              return (
+                <button
+                  className={` ${t.name}`}
+                  id="btn_filtro"
+                  key={index}
+                  value={t.name}
+                  onClick={handleFilterByTypes}
+                >
+                  {t.name}
+                </button>
+              );
+            })}
       </div>
     </div>
   );

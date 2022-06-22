@@ -10,8 +10,9 @@
   margin-left: 10%;
   height: 90%;
   border-radius: 30px;
-  background: #e9e7e7;
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  background: #ffffff;
+  box-shadow: 0 30px 50px rgb(17 29 48 / 26%);
+  border-radius: 15px;
 }
 
 .container {
@@ -61,7 +62,7 @@
   height: 2rem;
   width: 100%;
   align-items: center;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
 }
 
 #name,

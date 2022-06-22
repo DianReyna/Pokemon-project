@@ -37,7 +37,7 @@ export function UseForm(initialForm, validate) {
       form.name.length > 0 &&
       form.name.length <= 10 &&
       form.types.length < 3 &&
-      !errors.hasOwnProperty("urlImg") &&
+      !errors.hasOwnProperty("img") &&
       !errors.hasOwnProperty("hp") &&
       !errors.hasOwnProperty("attack") &&
       !errors.hasOwnProperty("defense") &&
