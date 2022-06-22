@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getPokemons } from "../../redux/actions";
+import ErrorType from "../Error/ErrorType";
 import Filters from "../Filters/Filters";
 import Type from "../Filters/Type";
 import PikachuLoader from "../Loader/PikachuLoader";
@@ -44,7 +45,11 @@ export default function Allpokemons() {
         </div>
         <div className={AllPoke.container_three}>
           <div className={AllPoke.container_colum}>
-            {pokemonData.length === 0 ? (
+            {pokemonData[0] === "error" ? (
+              <div>
+                <ErrorType />
+              </div>
+            ) : pokemonData.length === 0 ? (
               <div className="AllPoke.loaderpika">
                 <PikachuLoader />
               </div>

@@ -1,29 +1,14 @@
-.containerpikachu {
+.PikachuBack {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  margin-left: 6rem;
 }
 
-.loading {
+.pikaloading {
   background-color: #fff;
-  width: 100%;
-  /* display: fixed; */
 }
 
-.loading img {
+.imgpika {
   display: block;
-  min-height: 50px;
-  min-width: 100px;
-}
-
-@keyframes mouseAnimation {
-  from {
-    width: 25px;
-    height: 25px;
-  }
-
-  to {
-    width: 15px;
-    height: 15px;
-  }
+  width: 90%;
 }

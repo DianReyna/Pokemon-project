@@ -3,6 +3,7 @@ import "./DetailCss.css";
 export default function PokemonDetail(pokeDetail) {
   const { name, id, types, img, hp, attack, defense, speed, height, weight } =
     pokeDetail.pokeDetail;
+
   return (
     <div className="container">
       <div className="navContainer">
@@ -12,10 +13,10 @@ export default function PokemonDetail(pokeDetail) {
         <div className="id_container">
           <div className="pokeId">
             <div id="id">
-              <h5>Id:</h5>
+              <h5>#</h5>
             </div>
             <div id="idpokemon">
-              <h5>{id}</h5>
+              <h5> {id.length > 4 ? id.slice(0, 3) : id}</h5>
             </div>
           </div>
         </div>

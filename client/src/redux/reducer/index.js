@@ -47,7 +47,7 @@ export default function rootReducer(state = initialState, action) {
       };
     case FILTER_TYPES:
       const pokemons = state.pokemons;
-      const filtType =
+      let filtType =
         action.payload === "allTypes"
           ? pokemons
           : pokemons.filter(
@@ -55,6 +55,9 @@ export default function rootReducer(state = initialState, action) {
                 e.types.map((type) => type)[0] === action.payload ||
                 e.types.map((type) => type)[1] === action.payload
             );
+      if (filtType.length === 0) {
+        filtType = ["error"];
+      }
       return {
         ...state,
         allPokemons: filtType,
