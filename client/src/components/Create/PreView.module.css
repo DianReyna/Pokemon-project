@@ -1,19 +1,17 @@
 .views {
-  background-color: black;
   width: 50%;
 }
 .detail_container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: rosybrown;
   width: 80%;
   margin-top: 8%;
   margin-left: 10%;
   height: 90%;
   border-radius: 30px;
-  /* background: #e9e7e7;
-  /* box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;  */
+  background: #e9e7e7;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }
 
 .container {
@@ -34,46 +32,27 @@
   margin-top: 0.5rem;
   height: 2rem;
 }
-.pokeId {
-  display: flex;
-  font-size: medium;
-  flex-direction: row;
-  margin-right: 1.7rem;
-  justify-content: flex-end;
-  height: 1.8rem;
-  width: 5rem;
-  border-radius: 1rem;
-  align-items: center;
-  background-color: gold;
-}
-
-#id,
-#idpokemon {
-  height: 1.2rem;
-  align-items: center;
-  margin-right: 30%;
-  display: flex;
-  font-size: large;
-  font-weight: bold;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-#id {
-  margin-right: 0.3rem;
-}
 
 .pokeImg {
   display: flex;
   justify-content: center;
-  background-color: brown;
-  width: 45%;
-  height: 40%;
+  width: 210px;
+  height: 250px;
   display: flex;
-  margin-top: 15px;
+  margin-top: 20px;
+  border-radius: 1rem;
+  border: 1.5px inset white;
+  box-shadow: inset 20px 20px 60px #f2f2f2, inset -20px -20px 60px #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+.egg {
+  margin-top: 2.8rem;
 }
 .image {
-  top: 1px;
-  width: 220px;
+  border-radius: 1rem;
+  width: 210px;
+  height: 250px;
 }
 
 .pokeName {
@@ -96,19 +75,50 @@
   justify-content: center;
   margin-top: 0.2rem;
   width: 100%;
-  background-color: blue;
+  height: 15%;
 }
 .type {
   display: flex;
 }
-
+.positiontype {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  justify-items: center;
+  margin-left: 1rem;
+}
+.titletype {
+  margin-top: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+}
 .divtype {
   margin-left: 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  border-radius: 9rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  color: white;
 }
 .btntype {
   margin-left: 0.5rem;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: bold;
+  border: 1.5px inset white;
+  box-shadow: inset 20px 20px 60px #f2f2f2, inset -20px -20px 60px #ffffff;
+  transition: all 0.5s ease-in-out;
 }
-
+.btntype:hover {
+  border: 1.5px inset #a6131e;
+  box-shadow: inset 20px 20px 60px #a6131e, inset -20px -20px 60px #a6131e;
+  transition: all 0.5s ease-in-out;
+  color: #a6131e;
+}
 #pokeTypes {
   display: flex;
   align-content: center;

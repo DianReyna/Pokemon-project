@@ -3,6 +3,7 @@ import { Validate } from "./Validate";
 import CreateCss from "./CreateCss.module.css";
 import BotonesNav from "../BotonesNav/BotonesNav";
 import Prev from "./PreView.module.css";
+import Egg from "../Loader/Egg";
 
 export default function Create() {
   const initialForm = {
@@ -202,7 +203,13 @@ export default function Create() {
         <div className={Prev.views}>
           <div id="card" className={Prev.detail_container}>
             <div className={Prev.pokeImg}>
-              <img className={Prev.image} src={form.img} alt="Pokemon" />
+              {form.img.length === 0 ? (
+                <div className={Prev.egg}>
+                  <Egg />
+                </div>
+              ) : (
+                <img className={Prev.image} src={form.img} alt="Pokemon" />
+              )}
             </div>
             <div className={Prev.pokeName}>
               <div id="name">
@@ -213,20 +220,20 @@ export default function Create() {
               </div>
             </div>
 
-            <div className={Prev.power}>
+            <div className={Prev.titletype}>
               <span>Types</span>
             </div>
             <div className={Prev.ContainerTypes}>
-              <div>
+              <div className={Prev.positiontype}>
                 {form.types?.map((type, index) => (
                   <div className={Prev.type}>
-                    <div className={Prev.divtype} key={index}>
+                    <div className={`${Prev.divtype} ${type} `} key={index}>
                       {type}
                       <button
                         className={Prev.btntype}
                         onClick={(e) => handleDeleteType(type)}
                       >
-                        X
+                        .
                       </button>
                     </div>
                   </div>
