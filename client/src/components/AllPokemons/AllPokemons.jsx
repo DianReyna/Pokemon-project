@@ -6,7 +6,6 @@ import ErrorType from "../Error/ErrorType";
 import Filters from "../Filters/Filters";
 import Type from "../Filters/Type";
 import PikachuLoader from "../Loader/PikachuLoader";
-
 import Paginado from "../Paginado/Paginado";
 import Pokemon from "../Pokemon/Pokemon";
 import AllPoke from "./AllPokeCss.module.css";

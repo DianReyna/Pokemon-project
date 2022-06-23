@@ -201,13 +201,7 @@ export default function Create() {
         <div className={Prev.views}>
           <div id="card" className={Prev.detail_container}>
             <div className={Prev.pokeImg}>
-              {errors.hasOwnProperty("types") ? (
-                <img
-                  className={Prev.image}
-                  src="https://c.tenor.com/IdQJwgoeSNwAAAAC/pokemon-what.gif"
-                  alt="error?"
-                />
-              ) : form.img.length === 0 ? (
+              {form.img.length === 0 ? (
                 <div className={Prev.egg}>
                   <Egg />
                 </div>

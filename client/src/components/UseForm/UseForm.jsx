@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postPokemon, typesPokemons } from "../../redux/actions";
+import { getPokemons, postPokemon, typesPokemons } from "../../redux/actions";
 
 export function UseForm(initialForm, validate) {
   const [form, setForm] = useState(initialForm);
@@ -10,9 +10,11 @@ export function UseForm(initialForm, validate) {
   const [disabled, setDisabled] = useState(true);
 
   const allTypes = useSelector((state) => state.types);
+  const pokemon = useSelector((state) => state.pokemons);
 
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getPokemons());
     dispatch(typesPokemons());
   }, [dispatch]);
 
@@ -61,8 +63,11 @@ export function UseForm(initialForm, validate) {
   const handleSubmit = (e) => {
     e.preventDefault();
     seterrors(validate(form));
+    let coincidencia = pokemon.find((e) => e.name === form.name);
 
-    if (Object.keys(errors).length === 0) {
+    if (coincidencia) {
+      return alert("El pokemon ya existe");
+    } else if (Object.keys(errors).length === 0) {
       setLoading(true);
       const newPokemon = {
         name: form.name,
@@ -96,7 +101,6 @@ export function UseForm(initialForm, validate) {
     form,
     errors,
     loading,
-    //  response,
     allTypes,
     disabled,
     handleChange,
