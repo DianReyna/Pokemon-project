@@ -14,7 +14,7 @@ export function Validate(form) {
     errors.name = "The name can only be 15 characters long. Please try again!";
   }
 
-  if (!regexUrl.test(form.img.trim())) {
+  if (form.img.trim() && !regexUrl.test(form.img.trim())) {
     errors.img = "The url must be of an image.Please try again!";
   }
 
@@ -24,32 +24,32 @@ export function Validate(form) {
     errors.hp = "The value entered must be a number. Try again!";
   }
 
-  if (form.attack.trim() < 1 || form.attack.trim() > 251) {
-    errors.attack = "Attack point, must be between 1 or 250";
+  if (form.attack.trim() < 1 || form.attack.trim() > 100) {
+    errors.attack = "Attack point, must be between 1 or 99";
   } else if (!regexNumber.test(form.attack.trim())) {
     errors.attack = "The value entered must be a number. Try again!";
   }
 
-  if (form.defense.trim() < 1 || form.defense.trim() > 251) {
-    errors.defense = "Defense point, must be between 1 or 250";
+  if (form.defense.trim() < 1 || form.defense.trim() > 100) {
+    errors.defense = "Defense point, must be between 1 or 99";
   } else if (!regexNumber.test(form.defense.trim())) {
     errors.defense = "The value entered must be a number. Try again!";
   }
 
-  if (form.speed.trim() < 1 || form.speed.trim() > 251) {
-    errors.speed = "Speed point, must be between 1 or 250";
+  if (form.speed.trim() < 1 || form.speed.trim() > 100) {
+    errors.speed = "Speed point, must be between 1 or 99";
   } else if (!regexNumber.test(form.speed.trim())) {
     errors.speed = "The value entered must be a number. Try again!";
   }
 
-  if (form.weight.trim() < 1 || form.weight.trim() > 251) {
-    errors.weight = "Weight point, must be between 1 or 250";
+  if (form.weight.trim() < 1 || form.weight.trim() > 100) {
+    errors.weight = "Weight point, must be between 1 or 99";
   } else if (!regexNumber.test(form.weight.trim())) {
     errors.weight = "The value entered must be a number. Try again!";
   }
 
-  if (form.height.trim() < 1 || form.height.trim() > 251) {
-    errors.height = "Height point, must be between 1 or 250";
+  if (form.height.trim() < 1 || form.height.trim() > 100) {
+    errors.height = "Height point, must be between 1 or 99";
   } else if (!regexNumber.test(form.height.trim())) {
     errors.height = "The value entered must be a number. Try again!";
   }

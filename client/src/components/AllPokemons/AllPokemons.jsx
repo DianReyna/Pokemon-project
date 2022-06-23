@@ -12,6 +12,7 @@ import AllPoke from "./AllPokeCss.module.css";
 
 export default function Allpokemons() {
   let pokemons = useSelector((state) => state.allPokemons);
+  let pageSerch = useSelector((state) => state.setPage);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
@@ -30,8 +31,9 @@ export default function Allpokemons() {
   let dispatch = useDispatch();
 
   useEffect(() => {
+    setCurrentPage(1);
     dispatch(getPokemons());
-  }, [dispatch]);
+  }, [dispatch, pageSerch]);
 
   return (
     <div className={AllPoke.container}>

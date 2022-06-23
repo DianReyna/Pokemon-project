@@ -237,12 +237,6 @@ export default function Create() {
                   </div>
                 ))}
               </div>
-
-              {/* {types?.map((type, i) => (
-                <div key={i} className={` ${type}`} id="pokeTypes">
-                  <p id="text">{type}</p>
-                </div>
-              ))} */}
             </div>
 
             <div className={Prev.power}>

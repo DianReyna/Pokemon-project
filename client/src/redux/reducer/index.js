@@ -105,7 +105,7 @@ export default function rootReducer(state = initialState, action) {
 
     case FILTER_BY_ORIGEN:
       const value = action.payload;
-      const filterOrigen = state.pokemons.filter((pokemon) =>
+      let filterOrigen = state.pokemons.filter((pokemon) =>
         pokemon.id.toString().includes("-")
       );
       const filterApi = state.pokemons.filter(
