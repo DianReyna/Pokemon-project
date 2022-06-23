@@ -15,7 +15,7 @@ const initialState = {
   allPokemons: [],
   detail: [],
   types: [],
-  setPage: 0,
+
 };
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -30,7 +30,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         allPokemons: action.payload,
-        setPage: 1,
+
       };
     case GET_POKEMONS_BYID:
       return {

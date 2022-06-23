@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getPokemons } from "../../redux/actions";
 import ErrorType from "../Error/ErrorType";
 import Filters from "../Filters/Filters";
@@ -12,7 +11,6 @@ import AllPoke from "./AllPokeCss.module.css";
 
 export default function Allpokemons() {
   let pokemons = useSelector((state) => state.allPokemons);
-  let pageSerch = useSelector((state) => state.setPage);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
@@ -31,9 +29,8 @@ export default function Allpokemons() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    setCurrentPage(1);
     dispatch(getPokemons());
-  }, [dispatch, pageSerch]);
+  }, [dispatch]);
 
   return (
     <div className={AllPoke.container}>
