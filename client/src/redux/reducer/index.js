@@ -15,7 +15,7 @@ const initialState = {
   allPokemons: [],
   detail: [],
   types: [],
-
+  setPage: 0,
 };
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -27,10 +27,14 @@ export default function rootReducer(state = initialState, action) {
         filter: action.payload,
       };
     case SEARCH_POKEMON:
+      let search;
+      action.payload === "AxiosError"
+        ? (search = ["error"])
+        : (search = action.payload);
       return {
         ...state,
-        allPokemons: action.payload,
-
+        allPokemons: search,
+        setPage: 1,
       };
     case GET_POKEMONS_BYID:
       return {

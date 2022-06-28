@@ -4,7 +4,7 @@
   padding: 0;
   height: 10%;
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: center;
   box-shadow: 0 30px 50px rgb(17 29 48 / 10%);
 }
@@ -12,7 +12,7 @@
   width: 100%;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 .logo {
@@ -23,12 +23,14 @@
 }
 
 .home {
-  margin-left: 8%;
+  margin-left: 14%;
 }
 .create {
-  margin-right: 8%;
+  margin-right: 1%;
 }
-
+.about {
+  margin-right: 10rem;
+}
 .serch {
   margin-left: 10%;
 }
@@ -49,6 +51,28 @@
 
 .button:hover {
   animation: shake3856 0.3s linear infinite both;
+}
+
+.imgi {
+  width: 32px;
+}
+
+.btn_about {
+  background: #fff;
+  border: transparent;
+  cursor: pointer;
+  width: 100px;
+  padding: 4px;
+  color: #e81319;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.6s;
+}
+button.btn_about:focus {
+  outline: none;
+}
+button.btn_about:active {
+  transform: scale(1.1);
 }
 
 @keyframes shake3856 {

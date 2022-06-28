@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getPokemons } from "../../redux/actions";
 import ErrorType from "../Error/ErrorType";
 import Filters from "../Filters/Filters";
@@ -10,7 +11,8 @@ import Pokemon from "../Pokemon/Pokemon";
 import AllPoke from "./AllPokeCss.module.css";
 
 export default function Allpokemons() {
-  let pokemons = useSelector((state) => state.allPokemons);
+  const pokemons = useSelector((state) => state.allPokemons);
+  const pageSearch = useSelector((state) => state.setPage);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
@@ -29,18 +31,32 @@ export default function Allpokemons() {
   let dispatch = useDispatch();
 
   useEffect(() => {
+    setCurrentPage(1);
     dispatch(getPokemons());
-  }, [dispatch]);
+  }, [dispatch, pageSearch]);
 
   return (
     <div className={AllPoke.container}>
-      <div className={AllPoke.types}>
+      {/* <div className={AllPoke.types}>
         <Type setCurrentPage={setCurrentPage} />
+      </div> */}
+      <div className={AllPoke.filters}>
+        <Filters setCurrentPage={setCurrentPage} />
+        {/* <div>
+          <Link to="/about">
+            <button>ABOUT</button>
+          </Link>
+        </div> */}
       </div>
+
       <div className={AllPoke.container_two}>
-        <div className={AllPoke.filters}>
+        {/* <div className={AllPoke.filters}>
           <Filters setCurrentPage={setCurrentPage} />
+        </div> */}
+        <div className={AllPoke.types}>
+          <Type setCurrentPage={setCurrentPage} />
         </div>
+
         <div className={AllPoke.container_three}>
           <div className={AllPoke.container_colum}>
             {pokemonData[0] === "error" ? (
@@ -57,13 +73,13 @@ export default function Allpokemons() {
               })
             )}
           </div>
-          <div className={AllPoke.paginado}>
-            <Paginado
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              maximo={maximo}
-            />
-          </div>
+        </div>
+        <div className={AllPoke.paginado}>
+          <Paginado
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maximo={maximo}
+          />
         </div>
       </div>
     </div>

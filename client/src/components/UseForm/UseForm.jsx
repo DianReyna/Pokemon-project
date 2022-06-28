@@ -66,7 +66,7 @@ export function UseForm(initialForm, validate) {
     let coincidencia = pokemon.find((e) => e.name === form.name);
 
     if (coincidencia) {
-      return alert("El pokemon ya existe");
+      return alert("the pokemon already exists");
     } else if (Object.keys(errors).length === 0) {
       setLoading(true);
       const newPokemon = {
@@ -92,7 +92,7 @@ export function UseForm(initialForm, validate) {
         img: "",
         types: [],
       });
-      alert("Pokemon creado");
+      alert("Pokemon created");
     } else {
       return;
     }

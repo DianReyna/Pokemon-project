@@ -23,6 +23,17 @@ export default function NavBar() {
             <button className="button">Create</button>
           </Link>
         </div>
+        <div className="about">
+          <Link to="/about">
+            <button className="btn_about">
+              <img
+                className="imgi"
+                src="https://static.vecteezy.com/system/resources/thumbnails/000/381/025/small/Basic_Elements__28181_29.jpg"
+                alt="i"
+              />
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

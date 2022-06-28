@@ -5,6 +5,7 @@ import DetailContainer from "./components/DetailContainer/DetailContainer";
 import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
 import PikachuLoader from "./components/Loader/PikachuLoader";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Route path="/detail/:id" component={DetailContainer} />
 
       <Route exact path="/create" component={Create} />
-      <Route exact path="/pika" component={PikachuLoader} />
+      <Route exact path="/about" component={About} />
     </div>
   );
 }

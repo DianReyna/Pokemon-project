@@ -26,9 +26,7 @@ export function getPokemons() {
       })
       .catch((error) => {
         console.log(error.message);
-        return alert(
-          "Hubo un error al cargar la informacion. Intenta de nuevo"
-        );
+        return alert("There was an error loading the information. Try again");
       });
   };
 }
@@ -36,7 +34,7 @@ export function getPokemons() {
 export function searchPokemon(search) {
   return async function (dispatch) {
     if (search.search(/^[a-zA-Zñáéíóúü]*$/)) {
-      return alert("El nombre solo debe contener letras.");
+      return alert("The name must only contain letters.");
     }
     await axios
       .get(`${URL_POKEMONS}/?name=${search}`)
@@ -47,8 +45,11 @@ export function searchPokemon(search) {
         });
       })
       .catch((error) => {
-        console.log(error.message);
-        return alert("no se encontro el pokemon");
+        return dispatch({
+          type: SEARCH_POKEMON,
+          payload: error.name,
+        });
+        // return alert("no se encontro el pokemon");
       });
   };
 }
@@ -65,7 +66,7 @@ export function getPokemonsById(id) {
       })
       .catch((error) => {
         console.log(error.message);
-        return alert(`No encontramos al Pokemon con el id ${id}`);
+        return alert(`We did not find the Pokemon with the id ${id}`);
       });
   };
 }
@@ -86,7 +87,7 @@ export function postPokemon(payload) {
         });
       })
       .catch((error) => {
-        return alert("Hubo un error al crear al Pokemon.");
+        return alert("There was an error creating the Pokemon.");
       });
   };
 }

@@ -1,15 +1,16 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .container_two {
   display: flex;
-  width: 100%;
+  width: 85%;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .container_three {
-  width: 80%;
+  width: 100%;
+  margin-left: 2%;
 }
 .group {
   width: 98%;

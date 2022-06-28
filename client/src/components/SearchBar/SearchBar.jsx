@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { React, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { getPokemons, searchPokemon } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import { searchPokemon } from "../../redux/actions";
 
 import "./Search.css";
 
@@ -10,11 +9,9 @@ export default function SearchBar() {
   const [search, setSerch] = useState("");
   const dispatch = useDispatch();
 
-  const histoy = useHistory();
   function handleInputChange(e) {
     setSerch(e.target.value);
   }
-  console.log(histoy);
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(searchPokemon(search.toLocaleLowerCase()));

@@ -5,7 +5,7 @@ export default function ErrorType() {
   return (
     <div className="container_error">
       <div className="title_error">
-        <h3>Type of pokemon does not exist</h3>
+        <h3>Error no pokemon found</h3>
       </div>
       <div className="img_error">
         <img
@@ -16,8 +16,8 @@ export default function ErrorType() {
       </div>
       <div className="text_error">
         <p>
-          There is no record of the type of pokemon you are looking for, you can
-          create one
+          There is no record of the pokemon you are looking for, you can create
+          one
         </p>
       </div>
       <div>

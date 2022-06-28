@@ -1,0 +1,117 @@
+.containerPokemon {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+.contentText {
+  width: 80%;
+  margin-left: 5rem;
+  align-items: center;
+}
+.pokeImage {
+  margin-top: 3rem;
+  margin-left: 8rem;
+}
+
+.tecnologias {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.6rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.3rem;
+}
+
+.imgJS {
+  width: 100px;
+}
+
+.imgCSS {
+  width: 70px;
+}
+
+.imgHTML {
+  width: 60px;
+}
+
+.imgREACT {
+  width: 70px;
+}
+
+.imgREDUX {
+  width: 70px;
+}
+
+.imgEXPRESS {
+  width: 75px;
+}
+
+.imgPOSTGRESQL {
+  width: 80px;
+}
+
+.linkedIn {
+  width: 20px;
+}
+.github {
+  width: 20px;
+}
+
+.foo_item {
+  cursor: pointer;
+  margin-left: 30px;
+}
+.foo_name {
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+/* --------------- */
+
+.info {
+  position: relative;
+  cursor: pointer;
+  font-size: 50px;
+  /* color: #ff9575; */
+}
+
+.tooltip-text {
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+  background-color: #423d4c;
+  color: #fff;
+  border-radius: 10px;
+  line-height: 1.6;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 10ch;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.6s;
+}
+
+.tooltip-text::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #423d4c;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 42%) rotate(45deg);
+  border-radius: 2px;
+}
+.info:hover .tooltip-text {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
