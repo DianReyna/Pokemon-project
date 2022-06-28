@@ -30,16 +30,31 @@ export default function About() {
 
             <p>
               A server was developed in Node/Express creating routes to show and
-              create. The <a href="https://pokeapi.co/">pokeapi</a> was used to
-              obtain the first 40 pokemons, in this application the only
-              endpoints that were used were:
+              create. The{" "}
+              <a
+                href="https://pokeapi.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                pokeapi
+              </a>{" "}
+              was used to obtain the first 40 pokemons, in this application the
+              only endpoints that were used were:
             </p>
 
-            <a href="https://pokeapi.co/api/v2/pokemon">
+            <a
+              href="https://pokeapi.co/api/v2/pokemon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <p> https://pokeapi.co/api/v2/pokemon</p>
             </a>
 
-            <a href="https://pokeapi.co/api/v2/type">
+            <a
+              href="https://pokeapi.co/api/v2/type"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <p> https://pokeapi.co/api/v2/type</p>
             </a>
 
@@ -115,7 +130,11 @@ export default function About() {
           <h4>Contact me</h4>
         </div>
         <div className="foo_item">
-          <a href="https://www.linkedin.com/in/dianeth-reyna-armas-9a4816232/">
+          <a
+            href="https://www.linkedin.com/in/dianeth-reyna-armas-9a4816232/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               className="linkedIn"
               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
@@ -124,7 +143,11 @@ export default function About() {
           </a>
         </div>
         <div className="foo_item">
-          <a href="https://github.com/DianReyna">
+          <a
+            href="https://github.com/DianReyna"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               className="github"
               src="https://cdn-icons-png.flaticon.com/512/25/25231.png"

@@ -8,6 +8,8 @@ export function UseForm(initialForm, validate) {
   const [errors, seterrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const image =
+    "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2017/07/247161-nuevos-pokemon-salen-huevos.jpg?itok=_KF-nmwE";
 
   const allTypes = useSelector((state) => state.types);
   const pokemon = useSelector((state) => state.pokemons);
@@ -69,6 +71,8 @@ export function UseForm(initialForm, validate) {
       return alert("the pokemon already exists");
     } else if (Object.keys(errors).length === 0) {
       setLoading(true);
+      let imag = form.img === "" ? image : form.img;
+
       const newPokemon = {
         name: form.name,
         hp: form.hp,
@@ -77,7 +81,7 @@ export function UseForm(initialForm, validate) {
         speed: form.speed,
         height: form.height,
         weight: form.weight,
-        img: form.img,
+        img: imag,
         types: form.types,
       };
       dispatch(postPokemon(newPokemon));
