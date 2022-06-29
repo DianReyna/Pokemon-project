@@ -6,7 +6,7 @@
 
 .contentText {
   width: 80%;
-  margin-left: 5rem;
+  margin-left: 3rem;
   align-items: center;
 }
 .pokeImage {
@@ -18,7 +18,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
 }
 
 .footer {
@@ -89,7 +88,7 @@
   background-color: #423d4c;
   color: #fff;
   border-radius: 10px;
-  line-height: 1.6;
+  line-height: 1.7;
   position: absolute;
   top: -50%;
   left: 50%;
@@ -114,4 +113,38 @@
 .info:hover .tooltip-text {
   transform: translate(-50%, 0);
   opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .containerPokemon {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+  }
+  .pokeImage {
+    margin-top: 1rem;
+    margin-left: 2.5rem;
+  }
+  .pikachu_about {
+    width: 100%;
+  }
+
+  .tecnologias {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    align-items: center;
+  }
+  .PokeText {
+    text-align: center;
+  }
+  .Tecnoimg {
+    margin-bottom: 1.5rem;
+  }
+  .tooltip-text {
+    line-height: 1.7;
+    top: -35%;
+  }
 }

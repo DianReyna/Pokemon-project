@@ -10,6 +10,7 @@ export default function About() {
       <div className="containerPokemon">
         <div className="pokeImage">
           <img
+            className="pikachu_about"
             src="https://www.gratistodo.com/wp-content/uploads/2016/12/Pokemon-gifs-7.gif"
             alt="imagen-pokemon"
           />
@@ -66,7 +67,7 @@ export default function About() {
             <div className="tecnologias">
               <div className="info">
                 <img
-                  className="imgJS"
+                  className=" Tecnoimg imgJS"
                   src="https://ayudawp.com/wp-content/uploads/2017/01/javascript-logo-escudo.png"
                   alt="JS"
                 />
@@ -74,7 +75,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgCSS"
+                  className="Tecnoimg imgCSS"
                   src="https://res.cloudinary.com/marcomadera/image/upload/v1602894559/Blog/7/css_k23ypb.png"
                   alt="CSS"
                 />
@@ -82,7 +83,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgHTML"
+                  className="Tecnoimg imgHTML"
                   src="https://cdn-icons-png.flaticon.com/512/732/732212.png"
                   alt="HTML"
                 />
@@ -90,7 +91,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgREACT"
+                  className="Tecnoimg imgREACT"
                   src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png"
                   alt="REACT"
                 />
@@ -98,7 +99,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgREDUX"
+                  className="Tecnoimg imgREDUX"
                   src="https://img.icons8.com/color/480/redux.png"
                   alt="REDUX"
                 />
@@ -106,7 +107,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgEXPRESS"
+                  className="Tecnoimg imgEXPRESS"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxxFj-vn-t6WNplSdBQCRHmn7urIYgv2ScZA&usqp=CAU"
                   alt="EXPRESS"
                 />
@@ -114,7 +115,7 @@ export default function About() {
               </div>
               <div className="info">
                 <img
-                  className="imgPOSTGRESQL"
+                  className="Tecnoimg imgPOSTGRESQL"
                   src="https://icons-for-free.com/iconfiles/png/512/postgresql+plain-1324760555607314126.png"
                   alt="POSTGRESQL"
                 />

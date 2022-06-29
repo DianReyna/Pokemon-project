@@ -4,7 +4,6 @@ import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import DetailContainer from "./components/DetailContainer/DetailContainer";
 import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
-import PikachuLoader from "./components/Loader/PikachuLoader";
 import About from "./components/About/About";
 
 function App() {

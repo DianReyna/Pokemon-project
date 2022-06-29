@@ -148,3 +148,9 @@
 .cont_name {
   margin-right: 1rem;
 }
+
+@media screen and (max-width: 600px) {
+  .views {
+    display: none;
+  }
+}

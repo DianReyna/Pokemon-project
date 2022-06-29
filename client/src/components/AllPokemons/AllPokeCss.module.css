@@ -41,3 +41,24 @@
   justify-content: space-between;
   width: 80%;
 }
+
+@media screen and (max-width: 600px) {
+  .container_colum {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: auto;
+    justify-items: center;
+  }
+  .types {
+    width: 24rem;
+    height: 3rem;
+  }
+
+  .filters {
+    display: none;
+  }
+  .container_three {
+    margin-top: 2rem;
+  }
+}

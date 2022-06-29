@@ -89,3 +89,13 @@ code {
 .shadow {
   background: #4f4f4f;
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 86%;
+    /* display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: auto;
+    justify-items: center; */
+  }
+}

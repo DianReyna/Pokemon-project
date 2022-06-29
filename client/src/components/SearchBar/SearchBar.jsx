@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { React, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPokemon } from "../../redux/actions";

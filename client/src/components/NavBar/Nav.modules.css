@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-.home {
+.homE {
   margin-left: 14%;
 }
 .create {
@@ -104,5 +104,34 @@ button.btn_about:active {
   100% {
     -webkit-transform: translate(0);
     transform: translate(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .homE {
+    margin: 0;
+    width: 30%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+  }
+  .serch {
+    margin: 0;
+    width: 70%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+  .create {
+    margin-left: 10rem;
+  }
+
+  .about {
+    margin: 0;
   }
 }
