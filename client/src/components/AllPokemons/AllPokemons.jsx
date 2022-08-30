@@ -27,8 +27,6 @@ export default function Allpokemons() {
       : false
   );
 
-  console.log(pokemons);
-  console.log(pokemonData);
   let dispatch = useDispatch();
 
   useEffect(() => {

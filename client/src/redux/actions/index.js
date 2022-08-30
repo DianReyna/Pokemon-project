@@ -10,9 +10,9 @@ export const POST_POKEMON = "POST_POKEMON";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 export const FILTER_BY_ORIGEN = "FILTER_BY_ORIGEN";
-
-const URL_POKEMONS = "http://localhost:3001/api/pokemons";
-const URL_TYPES = "http://localhost:3001/api/types";
+const URL = process.env.REACT_APP_URL;
+const URL_POKEMONS = `${URL}/api/pokemons`;
+const URL_TYPES = `${URL}/api/types`;
 
 export function getPokemons() {
   return async function (dispatch) {
