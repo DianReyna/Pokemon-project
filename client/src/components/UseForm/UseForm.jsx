@@ -8,6 +8,8 @@ export function UseForm(initialForm, validate) {
   const [errors, seterrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const [selectDisable, setselectDisable] = useState(false);
+
   const image =
     "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2017/07/247161-nuevos-pokemon-salen-huevos.jpg?itok=_KF-nmwE";
 
@@ -32,6 +34,12 @@ export function UseForm(initialForm, validate) {
       ...form,
       types: [...form.types, value],
     });
+    setselectDisable(true);
+  };
+
+  const enableSelect = (e) => {
+    const typ = form.types.filter((el) => el === e.target.value);
+    typ.length !== 1 ? setselectDisable(true) : setselectDisable(false);
   };
 
   const handleBlur = (e) => {
@@ -112,5 +120,7 @@ export function UseForm(initialForm, validate) {
     handleBlur,
     handleDeleteType,
     handleSubmit,
+    selectDisable,
+    enableSelect,
   };
 }

@@ -27,6 +27,8 @@ export default function Create() {
     handleBlur,
     handleDeleteType,
     handleSubmit,
+    selectDisable,
+    enableSelect,
   } = UseForm(initialForm, Validate);
 
   return (
@@ -38,128 +40,126 @@ export default function Create() {
         <form onSubmit={handleSubmit}>
           <div className={CreateCss.formulario}>
             <div className={CreateCss.form_group}>
-              <label className={CreateCss.name_label}>Name:</label>
               <input
                 className={CreateCss.form_control}
                 type="text"
                 name="name"
-                placeholder="Pokemon name"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.name}
                 required
               />
+              <label className={CreateCss.name_label}>Pokemon name</label>
               {errors.name && <p className={CreateCss.error}>{errors.name}</p>}
             </div>
 
             <div className={CreateCss.form_group}>
-              <label className={CreateCss.name_label}>Imagen:</label>
               <input
                 className={CreateCss.form_control}
                 type="text"
                 name="img"
-                placeholder="Pokemon url-imagen"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.img}
+                required
               />
+              <label className={CreateCss.name_label}>Pokemon image</label>
               {errors.img && <p className={CreateCss.error}>{errors.img}</p>}
             </div>
+
             <div className={CreateCss.form_group}>
-              <label>Hp:</label>
               <input
                 className={CreateCss.form_control}
                 type="number"
                 name="hp"
-                placeholder="Health point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.hp}
                 required
               />
+              <label className={CreateCss.name_label}>Health point</label>
               {errors.hp && <p className={CreateCss.error}>{errors.hp}</p>}
             </div>
-
             <div className={CreateCss.form_group}>
-              <label>Attack:</label>
               <input
                 className={CreateCss.form_control}
-                type="number"
+                type="text"
                 name="attack"
-                placeholder="Attack point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.attack}
+                required
               />
+              <label className={CreateCss.name_label}>Attack point</label>
               {errors.attack && (
                 <p className={CreateCss.error}>{errors.attack}</p>
               )}
             </div>
-
             <div className={CreateCss.form_group}>
-              <label>Defense:</label>
               <input
                 className={CreateCss.form_control}
-                type="number"
+                type="text"
                 name="defense"
-                placeholder="Defense point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.defense}
+                required
               />
+              <label className={CreateCss.name_label}>Defense point</label>
               {errors.defense && (
                 <p className={CreateCss.error}>{errors.defense}</p>
               )}
             </div>
 
             <div className={CreateCss.form_group}>
-              <label>Speed:</label>
               <input
                 className={CreateCss.form_control}
-                type="number"
+                type="text"
                 name="speed"
-                placeholder="Speed point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.speed}
+                required
               />
+              <label className={CreateCss.name_label}>Speed point</label>
               {errors.speed && (
                 <p className={CreateCss.error}>{errors.speed}</p>
               )}
             </div>
 
             <div className={CreateCss.form_group}>
-              <label>Weight:</label>
               <input
                 className={CreateCss.form_control}
-                type="number"
+                type="text"
                 name="weight"
-                placeholder="Weight point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.weight}
+                required
               />
+              <label className={CreateCss.name_label}>Weight point</label>
               {errors.weight && (
                 <p className={CreateCss.error}>{errors.weight}</p>
               )}
             </div>
 
             <div className={CreateCss.form_group}>
-              <label>Height:</label>
               <input
                 className={CreateCss.form_control}
-                type="number"
+                type="text"
                 name="height"
-                placeholder="Height point"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.height}
+                required
               />
+              <label className={CreateCss.name_label}>Height point</label>
               {errors.height && (
                 <p className={CreateCss.error}>{errors.height}</p>
               )}
             </div>
-            <label>Types:</label>
+
+            <label className={CreateCss.label}>Types:</label>
             <div className={CreateCss.select}>
               <select
                 value={form.types}
@@ -168,6 +168,7 @@ export default function Create() {
                 multiple={true}
                 className={CreateCss.standard_select}
                 onChange={handleTypeChange}
+                disabled={selectDisable}
               >
                 {allTypes &&
                   allTypes
@@ -177,7 +178,12 @@ export default function Create() {
                       return 0;
                     })
                     .map((e, index) => (
-                      <option key={index} value={e.name}>
+                      <option
+                        // disabled={selectDisable}
+                        onClick={enableSelect}
+                        key={index}
+                        value={e.name}
+                      >
                         {e.name}
                       </option>
                     ))}
