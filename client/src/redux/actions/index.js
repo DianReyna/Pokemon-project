@@ -49,7 +49,6 @@ export function searchPokemon(search) {
           type: SEARCH_POKEMON,
           payload: error.name,
         });
-        // return alert("no se encontro el pokemon");
       });
   };
 }
