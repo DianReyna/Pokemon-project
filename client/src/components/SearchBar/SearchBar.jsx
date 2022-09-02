@@ -33,7 +33,7 @@ export default function SearchBar() {
         <div className="button-content">
           Search
           <img
-            src="http://www.purarteadesivos.com.br/wp-content/uploads/2017/04/Pok%C3%A9mon-go.png"
+            src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg"
             alt="pokebola"
           />
         </div>
